@@ -1,9 +1,10 @@
-package com.cespaul.arent.ui
+package com.cespaul.arent.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cespaul.arent.R
+import com.cespaul.arent.ui.rent.RentActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -13,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
         val intent = Intent(
             applicationContext,
-            MainActivity::class.java
+            RentActivity::class.java
         )
         startActivity(intent)
         finish()
