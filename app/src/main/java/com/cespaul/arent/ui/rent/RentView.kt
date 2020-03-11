@@ -4,12 +4,7 @@ import com.cespaul.arent.base.BaseView
 
 interface RentView : BaseView {
 
-    fun updateMonthList()
+    fun loadRentList()
 
     fun updateRentList()
-
-    fun showAddMonthDialog()
-
-    fun showAddRentDialog()
-
 }
