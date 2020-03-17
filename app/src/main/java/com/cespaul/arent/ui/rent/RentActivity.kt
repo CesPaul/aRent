@@ -1,6 +1,7 @@
 package com.cespaul.arent.ui.rent
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cespaul.arent.R
 import com.cespaul.arent.base.BaseActivity
@@ -10,7 +11,9 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class RentActivity : BaseActivity<RentPresenter>(), RentView {
 
-    private val rentAdapter = RentAdapter(this)
+    private val rentAdapter = RentAdapter(this) { _, item ->
+        Toast.makeText(this, "Edit", Toast.LENGTH_SHORT).show()
+    }
     private val layoutManager = LinearLayoutManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +23,9 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
 
         rentRecycler.layoutManager = layoutManager
         rentRecycler.adapter = rentAdapter
+
     }
+
 
     override fun loadRentList() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

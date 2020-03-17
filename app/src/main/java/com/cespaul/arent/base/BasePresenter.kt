@@ -3,6 +3,7 @@ package com.cespaul.arent.base
 import com.cespaul.arent.di.components.DaggerPresenterInjector
 import com.cespaul.arent.di.components.PresenterInjector
 import com.cespaul.arent.di.modules.ContextModule
+import com.cespaul.arent.di.modules.DatabaseModule
 import com.cespaul.arent.ui.rent.RentPresenter
 
 /**
@@ -20,8 +21,8 @@ abstract class BasePresenter<out V : BaseView>(protected val view: V) {
         .builder()
         .baseView(view)
         .contextModule(ContextModule)
+        .databaseModule(DatabaseModule)
         .build()
-
 
     open fun onViewCreated() {}
 
