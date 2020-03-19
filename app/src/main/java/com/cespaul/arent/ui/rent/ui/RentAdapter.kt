@@ -12,9 +12,10 @@ import kotlinx.android.synthetic.main.service_row.view.*
 
 class RentAdapter(
     private val context: Context,
-    private val onEditClickListener: (position: Int, item: RentService) -> Unit
+    private val onEditClickListener: (position: Int, item: RentService) -> Unit,
+    private val onDeleteClickListener: (position: Int, item: RentService) -> Unit
 ) :
-    RecyclerView.Adapter<RentAdapter.ServiceHolder>() {
+    RecyclerView.Adapter<RentAdapter.ServiceViewHolder>() {
 
     private var servicesList: List<RentService> = listOf(
         RentService("Вода", 5, 2),
@@ -44,8 +45,8 @@ class RentAdapter(
         RentService("Свет", 3, 60)
     )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceHolder {
-        return ServiceHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
+        return ServiceViewHolder(
             LayoutInflater.from(context).inflate(
                 R.layout.service_row,
                 parent,
@@ -58,26 +59,35 @@ class RentAdapter(
         return servicesList.size
     }
 
-    override fun onBindViewHolder(holder: ServiceHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ServiceViewHolder, position: Int) {
         val rentServices = servicesList[position]
-        holder.onEditClickListener = View.OnClickListener {
+        viewHolder.onEditClickListener = View.OnClickListener {
             onEditClickListener(position, rentServices)
         }
-        holder.serviceName.text = rentServices.nameService
-        holder.rateVal.text = rentServices.rateService.toString()
-        holder.amtVal.text = rentServices.amtService.toString()
+        viewHolder.onDeleteClickListener = View.OnClickListener {
+            onDeleteClickListener(position, rentServices)
+        }
+        viewHolder.serviceName.text = rentServices.nameService
+        viewHolder.rateVal.text = rentServices.rateService.toString()
+        viewHolder.amtVal.text = rentServices.amtService.toString()
     }
 
-    class ServiceHolder(itemLayoutView: View) :
+    class ServiceViewHolder(itemLayoutView: View) :
         RecyclerView.ViewHolder(itemLayoutView) {
+        private var editButton = itemLayoutView.editServiceView
+        private var deleteButton = itemLayoutView.deleteServiceView
         var onEditClickListener: View.OnClickListener? = null
+        var onDeleteClickListener: View.OnClickListener? = null
         var serviceName: TextView = itemLayoutView.serviceTextView
         var rateVal: TextView = itemLayoutView.rateTextView
         var amtVal: TextView = itemLayoutView.amtTextView
 
         init {
-            itemLayoutView.setOnClickListener {
+            editButton.setOnClickListener {
                 onEditClickListener?.onClick(it)
+            }
+            deleteButton.setOnClickListener {
+                onDeleteClickListener?.onClick(it)
             }
         }
     }
