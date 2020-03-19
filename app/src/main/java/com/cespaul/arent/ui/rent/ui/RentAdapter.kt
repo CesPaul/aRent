@@ -8,16 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cespaul.arent.R
 import com.cespaul.arent.model.RentService
+import com.cespaul.arent.model.repository.RentRepository
 import kotlinx.android.synthetic.main.service_row.view.*
 
 class RentAdapter(
     private val context: Context,
+    private val servicesRepository: RentRepository,
     private val onEditClickListener: (position: Int, item: RentService) -> Unit,
     private val onDeleteClickListener: (position: Int, item: RentService) -> Unit
 ) :
     RecyclerView.Adapter<RentAdapter.ServiceViewHolder>() {
 
-    private var servicesList: List<RentService> = listOf(
+    /*private var servicesList: List<RentService> = listOf(
         RentService("Вода", 5, 2),
         RentService("Свет", 3, 60),
         RentService("Свет", 3, 60),
@@ -43,7 +45,7 @@ class RentAdapter(
         RentService("Свет", 3, 85),
         RentService("Свет", 3, 60),
         RentService("Свет", 3, 60)
-    )
+    )*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         return ServiceViewHolder(
@@ -55,12 +57,10 @@ class RentAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return servicesList.size
-    }
+    override fun getItemCount(): Int = servicesRepository.getItemCount()
 
     override fun onBindViewHolder(viewHolder: ServiceViewHolder, position: Int) {
-        val rentServices = servicesList[position]
+        val rentServices = servicesRepository.getServiceAt(position)
         viewHolder.onEditClickListener = View.OnClickListener {
             onEditClickListener(position, rentServices)
         }

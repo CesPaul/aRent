@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cespaul.arent.R
 import com.cespaul.arent.base.BaseActivity
+import com.cespaul.arent.model.repository.RentRepositoryImpl
 import com.cespaul.arent.ui.rent.ui.RentAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 class RentActivity : BaseActivity<RentPresenter>(), RentView {
     private val rentAdapter = RentAdapter(
         this,
+        RentRepositoryImpl(),
         { _, item ->
             Toast.makeText(this, "Edit", Toast.LENGTH_SHORT).show()
         },

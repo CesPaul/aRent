@@ -8,6 +8,12 @@ interface RentRepository {
 
     fun deleteService(service: RentService)
 
+    fun editService(service: RentService)
+
+    fun getItemCount(): Int
+
+    fun getServiceAt(index: Int): RentService
+
     //fun getServicesFromDb(): RentService
 
 }
