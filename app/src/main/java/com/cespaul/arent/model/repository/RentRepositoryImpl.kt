@@ -5,7 +5,10 @@ import java.util.*
 
 class RentRepositoryImpl() : RentRepository {
 
-    private var listServices = ArrayList<RentService>()
+    companion object {
+        var listServices = ArrayList<RentService>()
+    }
+
     private var idService = 0
 
     override fun addService(service: RentService) {
@@ -21,6 +24,10 @@ class RentRepositoryImpl() : RentRepository {
                 return
             }
         }
+    }
+
+    override fun getListServices(): ArrayList<RentService> {
+        return listServices
     }
 
     override fun getItemCount(): Int = listServices.size

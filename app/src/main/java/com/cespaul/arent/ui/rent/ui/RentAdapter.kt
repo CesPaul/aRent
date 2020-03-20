@@ -19,34 +19,6 @@ class RentAdapter(
 ) :
     RecyclerView.Adapter<RentAdapter.ServiceViewHolder>() {
 
-    /*private var servicesList: List<RentService> = listOf(
-        RentService("Вода", 5, 2),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 76),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 56),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 54),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 42),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 12),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 32),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 85),
-        RentService("Свет", 3, 60),
-        RentService("Свет", 3, 60)
-    )*/
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         return ServiceViewHolder(
             LayoutInflater.from(context).inflate(
@@ -70,6 +42,11 @@ class RentAdapter(
         viewHolder.serviceName.text = rentServices.nameService
         viewHolder.rateVal.text = rentServices.rateService.toString()
         viewHolder.amtVal.text = rentServices.amtService.toString()
+        viewHolder.sumVal.text = rentServices.sumService.toString()
+    }
+
+    fun updateList() {
+        notifyDataSetChanged()
     }
 
     class ServiceViewHolder(itemLayoutView: View) :
@@ -81,6 +58,7 @@ class RentAdapter(
         var serviceName: TextView = itemLayoutView.serviceTextView
         var rateVal: TextView = itemLayoutView.rateTextView
         var amtVal: TextView = itemLayoutView.amtTextView
+        var sumVal: TextView = itemLayoutView.sumServiceTextView
 
         init {
             editButton.setOnClickListener {

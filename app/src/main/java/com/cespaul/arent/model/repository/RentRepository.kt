@@ -1,6 +1,7 @@
 package com.cespaul.arent.model.repository
 
 import com.cespaul.arent.model.RentService
+import java.util.*
 
 interface RentRepository {
 
@@ -9,6 +10,8 @@ interface RentRepository {
     fun deleteService(service: RentService)
 
     fun editService(service: RentService)
+
+    fun getListServices(): ArrayList<RentService>
 
     fun getItemCount(): Int
 

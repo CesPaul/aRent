@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">aRent</string>
+
+    <!-- Диалоговое окно добавления услуги-->
+    <string name="add_dialog_title">Добавление новой услуги</string>
+    <string name="name_add_service_hint">Название</string>
+    <string name="rate_add_service_hint">Тариф</string>
+    <string name="amt_add_service_hint">Объём потребления</string>
+    <string name="confirm_add_service_button">Добавить</string>
+    <string name="cancel_add_service_button">Отмена</string>
 </resources>

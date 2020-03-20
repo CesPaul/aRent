@@ -1,13 +1,17 @@
 package com.cespaul.arent.ui.rent
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cespaul.arent.R
 import com.cespaul.arent.base.BaseActivity
+import com.cespaul.arent.model.RentService
 import com.cespaul.arent.model.repository.RentRepositoryImpl
 import com.cespaul.arent.ui.rent.ui.RentAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_add_service.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class RentActivity : BaseActivity<RentPresenter>(), RentView {
@@ -22,6 +26,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
         }
     )
     private val layoutManager = LinearLayoutManager(this)
+    private val rentRepository = RentRepositoryImpl()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,10 +37,32 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
 
         rentRecycler.layoutManager = layoutManager
         rentRecycler.adapter = rentAdapter
-        addFab.setOnClickListener {
-            Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
-        }
 
+        addFab.setOnClickListener {
+
+            val addDialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_service, null)
+
+            val addDialogBuilder = AlertDialog.Builder(this)
+                .setView(addDialogView)
+                .setTitle(R.string.add_dialog_title)
+            val addAlertDialog = addDialogBuilder.show()
+
+            addDialogView.cancelAddButton.setOnClickListener {
+                addAlertDialog.dismiss()
+            }
+            addDialogView.confirmAddButton.setOnClickListener {
+                addAlertDialog.dismiss()
+                val name = addDialogView.name_service.text.toString()
+                val rate = addDialogView.rate_service.text.toString().toInt()
+                val amt = addDialogView.amt_service.text.toString().toInt()
+
+                val sum = rate * amt
+                val serviceRent = RentService(0, name, rate, amt, sum)
+                rentRepository.addService(serviceRent)
+                rentAdapter.updateList()
+            }
+            // Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun loadRentList() {
