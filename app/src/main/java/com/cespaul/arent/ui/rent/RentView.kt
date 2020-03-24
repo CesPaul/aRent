@@ -8,9 +8,9 @@ interface RentView : BaseView {
 
     fun updateRentList()
 
-    fun addService()
+    fun onAddService()
 
-    fun editService()
+    fun onEditService(position: Int)
 
-    fun deleteService(position: Int)
+    fun onDeleteService(position: Int)
 }

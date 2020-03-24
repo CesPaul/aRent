@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <Button
-        android:id="@+id/cancelAddButton"
+        android:id="@+id/cancelDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -14,7 +14,7 @@
         android:text="@string/cancel_service_button" />
 
     <Button
-        android:id="@+id/confirmAddButton"
+        android:id="@+id/confirmDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

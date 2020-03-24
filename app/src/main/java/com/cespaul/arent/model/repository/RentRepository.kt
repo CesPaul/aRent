@@ -9,8 +9,6 @@ interface RentRepository {
 
     fun deleteService(service: RentService)
 
-    fun editService(service: RentService)
-
     fun getListServices(): ArrayList<RentService>
 
     fun getItemCount(): Int
