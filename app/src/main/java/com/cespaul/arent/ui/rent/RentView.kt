@@ -7,4 +7,10 @@ interface RentView : BaseView {
     fun loadRentList()
 
     fun updateRentList()
+
+    fun addService()
+
+    fun editService()
+
+    fun deleteService(position: Int)
 }

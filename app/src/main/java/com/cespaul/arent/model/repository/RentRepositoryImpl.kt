@@ -26,6 +26,10 @@ class RentRepositoryImpl() : RentRepository {
         }
     }
 
+    override fun editService(service: RentService) {
+        TODO("Not yet implemented")
+    }
+
     override fun getListServices(): ArrayList<RentService> {
         return listServices
     }
@@ -34,7 +38,4 @@ class RentRepositoryImpl() : RentRepository {
 
     override fun getServiceAt(index: Int): RentService = listServices[index]
 
-    override fun editService(service: RentService) {
-        TODO("Not yet implemented")
-    }
 }
