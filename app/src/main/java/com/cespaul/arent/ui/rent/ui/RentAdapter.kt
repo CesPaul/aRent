@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.service_row.view.*
 class RentAdapter(
     private val context: Context,
     private val servicesRepository: RentRepository,
-    private val onEditClickListener: (position: Int, item: RentService) -> Unit,
-    private val onDeleteClickListener: (position: Int, item: RentService) -> Unit
+    val onEditClickListener: (position: Int, item: RentService) -> Unit,
+    val onDeleteClickListener: (position: Int, item: RentService) -> Unit
 ) :
     RecyclerView.Adapter<RentAdapter.ServiceViewHolder>() {
 
@@ -43,10 +43,6 @@ class RentAdapter(
         viewHolder.rateVal.text = rentServices.rateService.toString()
         viewHolder.amtVal.text = rentServices.amtService.toString()
         viewHolder.sumVal.text = rentServices.sumService.toString()
-    }
-
-    fun updateList() {
-        notifyDataSetChanged()
     }
 
     class ServiceViewHolder(itemLayoutView: View) :
