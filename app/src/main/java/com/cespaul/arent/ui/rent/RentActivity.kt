@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cespaul.arent.R
 import com.cespaul.arent.base.BaseActivity
@@ -17,11 +18,14 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class RentActivity : BaseActivity<RentPresenter>(), RentView {
 
+    private lateinit var toast: Toast
+
     private val layoutManager = LinearLayoutManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        toast = Toast.makeText(applicationContext, "", Toast.LENGTH_LONG)
         setSupportActionBar(toolbar_actionbar)
         val addFab = fab
 
@@ -47,13 +51,22 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
             addAlertDialog.dismiss()
         }
         addDialogView.confirmAddButton.setOnClickListener {
+            if (addDialogView.add_name_service.text.toString().isEmpty()) {
+                showToast("Название услуги не должно быть пустым!")
+                return@setOnClickListener
+            }
             val name = addDialogView.add_name_service.text.toString()
-            val rate = addDialogView.add_rate_service.text.toString().toFloat()
-            val amt = addDialogView.add_amt_service.text.toString().toFloat()
-            val sum = rate * amt
-            val serviceRent = RentService(0, name, rate, amt, sum)
-            addAlertDialog.dismiss()
-            onConfirmListener.invoke(serviceRent)
+            try {
+                val rate = addDialogView.add_rate_service.text.toString().toFloat()
+                val amt = addDialogView.add_amt_service.text.toString().toFloat()
+                val sum = rate * amt
+                val serviceRent = RentService(0, name, rate, amt, sum)
+                addAlertDialog.dismiss()
+                onConfirmListener.invoke(serviceRent)
+            } catch (e: NumberFormatException) {
+                showToast("Проверьте поля ввода. Поля ввода не должны быть пустыми!")
+                return@setOnClickListener
+            }
         }
     }
 
@@ -107,18 +120,32 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
             editAlertDialog.dismiss()
         }
         editDialogView.confirmEditButton.setOnClickListener {
-            editAlertDialog.dismiss()
-            // TODO: Перехватить неправильный ввод.
+            if (editDialogView.edit_name_service.text.toString().isEmpty()) {
+                showToast("Название услуги не должно быть пустым!")
+                return@setOnClickListener
+            }
             val nameService = editDialogView.edit_name_service.text.toString()
-            val rateService = editDialogView.edit_rate_service.text.toString().toFloat()
-            val amtService = editDialogView.edit_amt_service.text.toString().toFloat()
-            val sum = rateService * amtService
-            val tempRentService = RentService(-1, nameService, rateService, amtService, sum)
-            onConfirmListener.invoke(tempRentService)
+            try {
+                val rateService = editDialogView.edit_rate_service.text.toString().toFloat()
+                val amtService = editDialogView.edit_amt_service.text.toString().toFloat()
+                val sum = rateService * amtService
+                val tempRentService = RentService(-1, nameService, rateService, amtService, sum)
+                editAlertDialog.dismiss()
+                onConfirmListener.invoke(tempRentService)
+            } catch (e: NumberFormatException) {
+                showToast("Проверьте поля ввода. Поля ввода не должны быть пустыми!")
+                return@setOnClickListener
+            }
+            editAlertDialog.dismiss()
         }
     }
 
     override fun instantiatePresenter(): RentPresenter {
         return RentPresenter(this)
+    }
+
+    override fun showToast(message: String?) {
+        toast.setText(message)
+        toast.show()
     }
 }

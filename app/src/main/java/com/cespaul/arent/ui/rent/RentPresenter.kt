@@ -31,16 +31,19 @@ class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
             rentRepository.deleteService(itemService)
             rentAdapter.notifyDataSetChanged()
         }
-
     }
 
     private fun onEditService(itemService: RentService) {
         view.showEditDialog(itemService) {
-            itemService.nameService = it.nameService
-            itemService.rateService = it.rateService
-            itemService.amtService = it.amtService
-            itemService.sumService = it.sumService
-            rentAdapter.notifyDataSetChanged()
+            try {
+                itemService.nameService = it.nameService
+                itemService.rateService = it.rateService
+                itemService.amtService = it.amtService
+                itemService.sumService = it.sumService
+                rentAdapter.notifyDataSetChanged()
+            } catch (e: NumberFormatException) {
+                view.showToast("Поля не должны быть пустыми!")
+            }
         }
     }
 

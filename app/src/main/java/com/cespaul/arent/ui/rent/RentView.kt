@@ -5,6 +5,8 @@ import com.cespaul.arent.model.RentService
 
 interface RentView : BaseView {
 
+    fun showToast(message: String?)
+
     fun showAddDialog(onConfirmListener: (RentService) -> Unit)
 
     fun showDeleteDialog(onConfirmListener: () -> Unit)
