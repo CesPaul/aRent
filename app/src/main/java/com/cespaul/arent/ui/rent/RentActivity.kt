@@ -2,6 +2,8 @@ package com.cespaul.arent.ui.rent
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.widget.TextView
 import android.widget.Toast
@@ -22,11 +24,26 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
 
     private val layoutManager = LinearLayoutManager(this)
 
+    private val filter: InputFilter = object : InputFilter {
+        val REGEX = "^[0-9.]+$"
+        override fun filter(
+            source: CharSequence,
+            start: Int,
+            end: Int,
+            dest: Spanned,
+            dstart: Int,
+            dend: Int
+        ): CharSequence? {
+            return if (source.isEmpty() || source.toString().matches(REGEX.toRegex())) null else ""
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         toast = Toast.makeText(applicationContext, "", Toast.LENGTH_LONG)
         setSupportActionBar(toolbar_actionbar)
+
         val addFab = fab
 
         rentRecycler.layoutManager = layoutManager
@@ -40,19 +57,21 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
     override fun showAddDialog(onConfirmListener: (RentService) -> Unit) {
         val addDialogView =
             LayoutInflater.from(this).inflate(R.layout.dialog_add_service, null)
-
         val addDialogBuilder = AlertDialog.Builder(this)
             .setView(addDialogView)
             .setTitle(R.string.add_dialog_title)
             .setCancelable(false)
         val addAlertDialog = addDialogBuilder.show()
 
+        addDialogView.add_rate_service.filters = arrayOf(filter)
+        addDialogView.add_amt_service.filters = arrayOf(filter)
+
         addDialogView.cancelAddButton.setOnClickListener {
             addAlertDialog.dismiss()
         }
         addDialogView.confirmAddButton.setOnClickListener {
             if (addDialogView.add_name_service.text.toString().isEmpty()) {
-                showToast("Название услуги не должно быть пустым!")
+                showToast("Поле с названием услуги не должно быть пустым!")
                 return@setOnClickListener
             }
             val name = addDialogView.add_name_service.text.toString()
@@ -64,7 +83,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
                 addAlertDialog.dismiss()
                 onConfirmListener.invoke(serviceRent)
             } catch (e: NumberFormatException) {
-                showToast("Проверьте поля ввода. Поля ввода не должны быть пустыми!")
+                showToast("Проверьте корректность ввода. Также поля ввода не должны быть пустыми!")
                 return@setOnClickListener
             }
         }
@@ -102,6 +121,8 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
             .setTitle(R.string.edit_dialog_title)
             .setCancelable(false)
         val editAlertDialog = editDialogBuilder.show()
+        editDialogView.edit_rate_service.filters = arrayOf(filter)
+        editDialogView.edit_amt_service.filters = arrayOf(filter)
 
         editAlertDialog.edit_name_service.setText(
             rentService.nameService,
@@ -121,7 +142,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
         }
         editDialogView.confirmEditButton.setOnClickListener {
             if (editDialogView.edit_name_service.text.toString().isEmpty()) {
-                showToast("Название услуги не должно быть пустым!")
+                showToast("Поле с названием услуги не должно быть пустым!")
                 return@setOnClickListener
             }
             val nameService = editDialogView.edit_name_service.text.toString()
@@ -133,7 +154,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
                 editAlertDialog.dismiss()
                 onConfirmListener.invoke(tempRentService)
             } catch (e: NumberFormatException) {
-                showToast("Проверьте поля ввода. Поля ввода не должны быть пустыми!")
+                showToast("Проверьте корректность ввода. Также поля ввода не должны быть пустыми!")
                 return@setOnClickListener
             }
             editAlertDialog.dismiss()
