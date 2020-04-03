@@ -3,6 +3,7 @@ package com.cespaul.arent.model.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.cespaul.arent.model.RentService
 
 @Dao
@@ -16,5 +17,8 @@ interface RentDao {
 
     @Query("delete from rentService where id == :id")
     fun deleteService(id: Int)
+
+    @Update
+    fun editService(service: RentService)
 
 }

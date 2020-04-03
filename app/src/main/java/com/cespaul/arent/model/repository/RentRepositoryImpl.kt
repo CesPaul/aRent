@@ -31,6 +31,10 @@ class RentRepositoryImpl(private val rentDb: RentDatabase) : RentRepository {
         }
     }
 
+    override fun editService(service: RentService) {
+        rentDb.rentDao().editService(service)
+    }
+
     override fun getListServices(): ArrayList<RentService> {
         return listServices
     }

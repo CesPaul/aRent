@@ -45,6 +45,7 @@ class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
                 itemService.rateService = it.rateService
                 itemService.amountService = it.amountService
                 itemService.sumService = it.sumService
+                rentRepository.editService(itemService)
                 rentAdapter.notifyDataSetChanged()
             } catch (e: NumberFormatException) {
                 view.showToast("Поля не должны быть пустыми!")
