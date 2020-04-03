@@ -1,23 +1,28 @@
 package com.cespaul.arent.model.repository
 
 import com.cespaul.arent.model.RentService
+import com.cespaul.arent.model.db.RentDatabase
 import java.util.*
 
-class RentRepositoryImpl() : RentRepository {
+class RentRepositoryImpl(private val rentDb: RentDatabase) : RentRepository {
 
-    companion object {
-        var listServices = ArrayList<RentService>()
+    private var listServices = ArrayList<RentService>()
+
+    init {
+        listServices.addAll(rentDb.rentDao().selectServices())
     }
 
     private var idService = 0
 
     override fun addService(service: RentService) {
+        rentDb.rentDao().insertService(service)
         listServices.add(service)
-        service.id = idService
-        idService++
+        /*service.id = idService
+        idService++*/
     }
 
     override fun deleteService(service: RentService) {
+        rentDb.rentDao().deleteService(service.id)
         for (listService in listServices) {
             if (listService.id == service.id) {
                 listServices.remove(listService)

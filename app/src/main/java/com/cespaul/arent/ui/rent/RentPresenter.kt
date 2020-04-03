@@ -2,15 +2,20 @@ package com.cespaul.arent.ui.rent
 
 import com.cespaul.arent.base.BasePresenter
 import com.cespaul.arent.model.RentService
+import com.cespaul.arent.model.db.RentDatabase
 import com.cespaul.arent.model.repository.RentRepositoryImpl
 import com.cespaul.arent.ui.rent.ui.RentAdapter
+import javax.inject.Inject
 
 class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
 
-    private val rentRepository = RentRepositoryImpl()
-    val rentAdapter = RentAdapter(
+    @Inject
+    lateinit var rentDb: RentDatabase
+    private val rentRepository = RentRepositoryImpl(rentDb)
+
+    var rentAdapter = RentAdapter(
         view.getContext(),
-        RentRepositoryImpl(),
+        rentRepository,
         { position, item ->
             onEditService(item)
         },
@@ -38,7 +43,7 @@ class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
             try {
                 itemService.nameService = it.nameService
                 itemService.rateService = it.rateService
-                itemService.amtService = it.amtService
+                itemService.amountService = it.amountService
                 itemService.sumService = it.sumService
                 rentAdapter.notifyDataSetChanged()
             } catch (e: NumberFormatException) {
@@ -46,5 +51,4 @@ class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
             }
         }
     }
-
 }

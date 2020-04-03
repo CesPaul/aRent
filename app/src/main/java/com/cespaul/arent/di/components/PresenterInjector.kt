@@ -14,7 +14,10 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(
-    modules = [(ContextModule::class), (DatabaseModule::class)]
+    modules = [
+        (ContextModule::class),
+        (DatabaseModule::class)
+    ]
 )
 
 /**

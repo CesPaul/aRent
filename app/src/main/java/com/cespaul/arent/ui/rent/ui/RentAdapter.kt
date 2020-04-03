@@ -41,7 +41,7 @@ class RentAdapter(
         }
         viewHolder.serviceName.text = rentServices.nameService
         viewHolder.rateVal.text = rentServices.rateService.toString()
-        viewHolder.amtVal.text = rentServices.amtService.toString()
+        viewHolder.amtVal.text = rentServices.amountService.toString()
         viewHolder.sumVal.text = rentServices.sumService.toString()
     }
 

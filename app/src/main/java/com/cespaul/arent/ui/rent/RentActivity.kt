@@ -133,7 +133,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
             TextView.BufferType.EDITABLE
         )
         editAlertDialog.edit_amt_service.setText(
-            rentService.amtService.toString(),
+            rentService.amountService.toString(),
             TextView.BufferType.EDITABLE
         )
 
