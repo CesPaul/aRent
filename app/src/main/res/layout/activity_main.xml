@@ -18,7 +18,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/shadow_footer"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_gravity="bottom"
@@ -27,6 +27,7 @@
         app:srcCompat="@mipmap/shadow_top_4dp" />
 
     <LinearLayout
+        android:id="@+id/footer_bar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:layout_gravity="bottom"
