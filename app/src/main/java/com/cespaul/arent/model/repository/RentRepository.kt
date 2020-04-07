@@ -16,7 +16,4 @@ interface RentRepository {
     fun getItemCount(): Int
 
     fun getServiceAt(index: Int): RentService
-
-    //fun getServicesFromDb(): RentService
-
 }

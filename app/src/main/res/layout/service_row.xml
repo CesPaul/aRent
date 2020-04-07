@@ -1,90 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rowRent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
     android:gravity="center"
-    android:orientation="vertical"
-    android:paddingBottom="8dp">
+    android:padding="@dimen/double_base_grid_size">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/serviceTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignParentTop="true"
+        android:text="Услуга"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/serviceTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:text="Услуга" />
+    <TextView
+        android:id="@+id/rateLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceTextView"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:gravity="center"
+        android:text="Тариф" />
 
-        <TextView
-            android:id="@+id/rateTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:text="Тариф" />
+    <TextView
+        android:id="@+id/rateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceTextView"
+        android:layout_marginStart="@dimen/base_grid_size"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:layout_toRightOf="@id/rateLabelTextView"
+        android:gravity="center"
+        android:text="Значение" />
 
-        <TextView
-            android:id="@+id/amtTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:text="Объём" />
+    <TextView
+        android:id="@+id/sumServiceLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amtLabelTextView"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:gravity="center"
+        android:text="Сумма" />
 
-        <TextView
-            android:id="@+id/sumServiceTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:text="Сумма" />
+    <TextView
+        android:id="@+id/sumServiceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amtLabelTextView"
+        android:layout_marginStart="@dimen/base_grid_size"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:layout_toRightOf="@id/sumServiceLabelTextView"
+        android:gravity="center"
+        android:text="Значение" />
 
-        <ImageView
-            android:id="@+id/editServiceView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="4.4"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_edit_24px" />
+    <TextView
+        android:id="@+id/amtTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rateLabelTextView"
+        android:layout_marginStart="@dimen/base_grid_size"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:layout_toRightOf="@id/amtLabelTextView"
+        android:gravity="center"
+        android:text="Значение" />
 
-        <ImageView
-            android:id="@+id/deleteServiceView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="4.4"
-            app:srcCompat="@drawable/ic_delete_24px" />
+    <TextView
+        android:id="@+id/amtLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rateLabelTextView"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:gravity="center"
+        android:text="Объём" />
 
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/editServiceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="@dimen/base_grid_size"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_edit_24px" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/deleteServiceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editServiceView"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="@dimen/base_grid_size"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_delete_24px" />
+
+</RelativeLayout>

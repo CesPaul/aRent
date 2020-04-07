@@ -7,6 +7,7 @@ import android.text.Spanned
 import android.view.LayoutInflater
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cespaul.arent.R
 import com.cespaul.arent.base.BaseActivity
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.dialog_delete_service.view.*
 import kotlinx.android.synthetic.main.dialog_edit_service.*
 import kotlinx.android.synthetic.main.dialog_edit_service.view.*
 import kotlinx.android.synthetic.main.toolbar.*
+
 
 class RentActivity : BaseActivity<RentPresenter>(), RentView {
 
@@ -44,12 +46,15 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
         toast = Toast.makeText(applicationContext, "", Toast.LENGTH_LONG)
         setSupportActionBar(toolbar_actionbar)
 
-        val addFab = fab
-
         rentRecycler.layoutManager = layoutManager
         rentRecycler.adapter = presenter.rentAdapter
+        val dividerItemDecoration = DividerItemDecoration(
+            rentRecycler.context,
+            layoutManager.orientation
+        )
+        rentRecycler.addItemDecoration(dividerItemDecoration)
 
-        addFab.setOnClickListener {
+        add_service_button.setOnClickListener {
             presenter.onAddService()
         }
     }

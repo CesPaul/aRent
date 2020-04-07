@@ -12,13 +12,9 @@ class RentRepositoryImpl(private val rentDb: RentDatabase) : RentRepository {
         listServices.addAll(rentDb.rentDao().selectServices())
     }
 
-    private var idService = 0
-
     override fun addService(service: RentService) {
         rentDb.rentDao().insertService(service)
         listServices.add(service)
-        /*service.id = idService
-        idService++*/
     }
 
     override fun deleteService(service: RentService) {

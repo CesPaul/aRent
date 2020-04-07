@@ -7,6 +7,9 @@
     <string name="rate_service_hint">Тариф</string>
     <string name="amt_service_hint">Объём потребления</string>
 
+    <!-- Кнопка добавления новой услуги -->
+    <string name="add_service_button">Добавить</string>
+
     <!-- Отмена для диалоговых окон -->
     <string name="cancel_service_button">Отмена</string>
 
