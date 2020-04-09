@@ -15,6 +15,7 @@ class RentRepositoryImpl(private val rentDb: RentDatabase) : RentRepository {
     override fun addService(service: RentService) {
         rentDb.rentDao().insertService(service)
         listServices.add(service)
+        countCommonSum()
     }
 
     override fun deleteService(service: RentService) {
@@ -29,6 +30,7 @@ class RentRepositoryImpl(private val rentDb: RentDatabase) : RentRepository {
 
     override fun editService(service: RentService) {
         rentDb.rentDao().editService(service)
+        countCommonSum()
     }
 
     override fun getListServices(): ArrayList<RentService> {
@@ -36,6 +38,14 @@ class RentRepositoryImpl(private val rentDb: RentDatabase) : RentRepository {
     }
 
     override fun getItemCount(): Int = listServices.size
+
+    override fun countCommonSum(): Float {
+        var commonSum: Float = 0F
+        for (indexService in 0 until listServices.size) {
+            commonSum += listServices[indexService].sumService
+        }
+        return commonSum
+    }
 
     override fun getServiceAt(index: Int): RentService = listServices[index]
 

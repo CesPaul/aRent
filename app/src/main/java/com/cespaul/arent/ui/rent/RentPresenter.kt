@@ -28,15 +28,22 @@ class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
         view.showAddDialog {
             rentRepository.addService(it)
             rentAdapter.notifyDataSetChanged()
+            view.updateCounterSum()
         }
+    }
+
+    fun onCountSumServices(): Float {
+        return rentRepository.countCommonSum()
     }
 
     private fun onDeleteService(itemService: RentService) {
         view.showDeleteDialog {
             rentRepository.deleteService(itemService)
             rentAdapter.notifyDataSetChanged()
+            view.updateCounterSum()
         }
     }
+
 
     private fun onEditService(itemService: RentService) {
         view.showEditDialog(itemService) {
@@ -47,6 +54,7 @@ class RentPresenter(rentView: RentView) : BasePresenter<RentView>(rentView) {
                 itemService.sumService = it.sumService
                 rentRepository.editService(itemService)
                 rentAdapter.notifyDataSetChanged()
+                view.updateCounterSum()
             } catch (e: NumberFormatException) {
                 view.showToast("Поля не должны быть пустыми!")
             }

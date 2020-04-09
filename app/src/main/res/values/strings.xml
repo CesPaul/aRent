@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">aRent</string>
 
+    <!-- Счётчик общей суммы по услугам -->
+    <string name="counter_label">Общая сумма: </string>
+
+    <!-- Описание услуги -->
+    <string name="name_service_label">Услуга</string>
+    <string name="rate_label">Тариф</string>
+    <string name="amount_label">Объём</string>
+    <string name="sum_label">Сумма</string>
+    <string name="value_label">Значение</string>
+
     <!-- Диалоговое окно добавления услуги-->
     <string name="add_dialog_title">Добавление новой услуги</string>
     <string name="name_service_hint">Название</string>

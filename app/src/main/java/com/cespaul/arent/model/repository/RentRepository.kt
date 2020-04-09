@@ -15,5 +15,7 @@ interface RentRepository {
 
     fun getItemCount(): Int
 
+    fun countCommonSum(): Float
+
     fun getServiceAt(index: Int): RentService
 }

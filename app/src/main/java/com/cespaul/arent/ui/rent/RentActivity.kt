@@ -53,6 +53,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
             layoutManager.orientation
         )
         rentRecycler.addItemDecoration(dividerItemDecoration)
+        updateCounterSum()
 
         add_service_button.setOnClickListener {
             presenter.onAddService()
@@ -166,12 +167,17 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
         }
     }
 
-    override fun instantiatePresenter(): RentPresenter {
-        return RentPresenter(this)
+    override fun updateCounterSum() {
+        counterSum.text = presenter.onCountSumServices().toString()
     }
 
     override fun showToast(message: String?) {
         toast.setText(message)
         toast.show()
     }
+
+    override fun instantiatePresenter(): RentPresenter {
+        return RentPresenter(this)
+    }
+
 }

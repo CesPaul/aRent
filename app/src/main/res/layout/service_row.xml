@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="Услуга"
+        android:text="@string/name_service_label"
         android:textSize="18sp" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_marginEnd="@dimen/base_grid_size"
         android:layout_marginBottom="@dimen/base_grid_size"
         android:gravity="center"
-        android:text="Тариф" />
+        android:text="@string/rate_label" />
 
     <TextView
         android:id="@+id/rateTextView"
@@ -36,9 +36,9 @@
         android:layout_marginTop="@dimen/base_grid_size"
         android:layout_marginEnd="@dimen/base_grid_size"
         android:layout_marginBottom="@dimen/base_grid_size"
-        android:layout_toRightOf="@id/rateLabelTextView"
+        android:layout_toEndOf="@id/rateLabelTextView"
         android:gravity="center"
-        android:text="Значение" />
+        android:text="@string/value_label" />
 
     <TextView
         android:id="@+id/sumServiceLabelTextView"
@@ -50,7 +50,7 @@
         android:layout_marginEnd="@dimen/base_grid_size"
         android:layout_marginBottom="@dimen/base_grid_size"
         android:gravity="center"
-        android:text="Сумма" />
+        android:text="@string/sum_label" />
 
     <TextView
         android:id="@+id/sumServiceTextView"
@@ -61,9 +61,9 @@
         android:layout_marginTop="@dimen/base_grid_size"
         android:layout_marginEnd="@dimen/base_grid_size"
         android:layout_marginBottom="@dimen/base_grid_size"
-        android:layout_toRightOf="@id/sumServiceLabelTextView"
+        android:layout_toEndOf="@id/sumServiceLabelTextView"
         android:gravity="center"
-        android:text="Значение" />
+        android:text="@string/value_label" />
 
     <TextView
         android:id="@+id/amtTextView"
@@ -74,9 +74,9 @@
         android:layout_marginTop="@dimen/base_grid_size"
         android:layout_marginEnd="@dimen/base_grid_size"
         android:layout_marginBottom="@dimen/base_grid_size"
-        android:layout_toRightOf="@id/amtLabelTextView"
+        android:layout_toEndOf="@id/amtLabelTextView"
         android:gravity="center"
-        android:text="Значение" />
+        android:text="@string/value_label" />
 
     <TextView
         android:id="@+id/amtLabelTextView"
@@ -88,14 +88,14 @@
         android:layout_marginEnd="@dimen/base_grid_size"
         android:layout_marginBottom="@dimen/base_grid_size"
         android:gravity="center"
-        android:text="Объём" />
+        android:text="@string/amount_label" />
 
     <ImageView
         android:id="@+id/editServiceView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/base_grid_size"
         android:layout_marginTop="@dimen/base_grid_size"
         android:layout_marginEnd="@dimen/base_grid_size"

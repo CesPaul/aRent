@@ -5,6 +5,8 @@ import com.cespaul.arent.model.RentService
 
 interface RentView : BaseView {
 
+    fun updateCounterSum()
+
     fun showToast(message: String?)
 
     fun showAddDialog(onConfirmListener: (RentService) -> Unit)
@@ -15,5 +17,4 @@ interface RentView : BaseView {
         rentService: RentService,
         onConfirmListener: (RentService) -> Unit
     )
-
 }
