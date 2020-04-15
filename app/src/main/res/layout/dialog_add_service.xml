@@ -3,36 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/triple_base_grid_size">
 
     <EditText
         android:id="@+id/add_name_service"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="@dimen/base_grid_size"
         android:gravity="center"
-        android:hint="@string/name_service_hint" />
+        android:hint="@string/name_service_hint"
+        android:maxLength="30" />
 
     <EditText
         android:id="@+id/add_rate_service"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="@dimen/base_grid_size"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:hint="@string/rate_service_hint"
-        android:inputType="number|phone" />
+        android:inputType="number|phone"
+        android:maxLength="10" />
 
     <EditText
         android:id="@+id/add_amt_service"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="@dimen/base_grid_size"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:hint="@string/amt_service_hint"
-        android:inputType="number|phone" />
+        android:inputType="number|phone"
+        android:maxLength="10" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -44,18 +50,18 @@
 
         <Button
             android:id="@+id/cancelAddButton"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="@dimen/base_grid_size"
             android:text="@string/cancel_service_button" />
 
         <Button
             android:id="@+id/confirmAddButton"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="@dimen/base_grid_size"
             android:text="@string/confirm_add_service_button" />
 
     </LinearLayout>

@@ -10,6 +10,7 @@ import com.cespaul.arent.R
 import com.cespaul.arent.model.RentService
 import com.cespaul.arent.model.repository.RentRepository
 import kotlinx.android.synthetic.main.service_row.view.*
+import java.text.DecimalFormat
 
 class RentAdapter(
     private val context: Context,
@@ -40,9 +41,9 @@ class RentAdapter(
             onDeleteClickListener(position, rentServices)
         }
         viewHolder.serviceName.text = rentServices.nameService
-        viewHolder.rateVal.text = rentServices.rateService.toString()
-        viewHolder.amtVal.text = rentServices.amountService.toString()
-        viewHolder.sumVal.text = rentServices.sumService.toString()
+        viewHolder.rateVal.text = DecimalFormat("#.## ₽").format(rentServices.rateService)
+        viewHolder.amountVal.text = DecimalFormat("#.##").format(rentServices.amountService)
+        viewHolder.sumVal.text = DecimalFormat("#.## ₽").format(rentServices.sumService)
     }
 
     class ServiceViewHolder(itemLayoutView: View) :
@@ -53,7 +54,7 @@ class RentAdapter(
         var onDeleteClickListener: View.OnClickListener? = null
         var serviceName: TextView = itemLayoutView.serviceTextView
         var rateVal: TextView = itemLayoutView.rateTextView
-        var amtVal: TextView = itemLayoutView.amtTextView
+        var amountVal: TextView = itemLayoutView.amtTextView
         var sumVal: TextView = itemLayoutView.sumServiceTextView
 
         init {

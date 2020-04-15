@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.dialog_delete_service.view.*
 import kotlinx.android.synthetic.main.dialog_edit_service.*
 import kotlinx.android.synthetic.main.dialog_edit_service.view.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.text.DecimalFormat
 
 
 class RentActivity : BaseActivity<RentPresenter>(), RentView {
@@ -168,7 +169,9 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
     }
 
     override fun updateCounterSum() {
-        counterSum.text = presenter.onCountSumServices().toString()
+        //counterSum.text = presenter.onCountSumServices().toString()
+        counterSum.text = DecimalFormat("#.## ₽").format(presenter.onCountSumServices()).toString()
+
     }
 
     override fun showToast(message: String?) {

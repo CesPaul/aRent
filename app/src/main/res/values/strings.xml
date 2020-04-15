@@ -6,10 +6,10 @@
 
     <!-- Описание услуги -->
     <string name="name_service_label">Услуга</string>
-    <string name="rate_label">Тариф</string>
-    <string name="amount_label">Объём</string>
-    <string name="sum_label">Сумма</string>
-    <string name="value_label">Значение</string>
+    <string name="rate_label">Тариф:</string>
+    <string name="amount_label">Объём:</string>
+    <string name="sum_label">Сумма:</string>
+    <string name="value_label">Значение:</string>
 
     <!-- Диалоговое окно добавления услуги-->
     <string name="add_dialog_title">Добавление новой услуги</string>
