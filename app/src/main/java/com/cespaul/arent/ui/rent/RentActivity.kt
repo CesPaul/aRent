@@ -45,7 +45,7 @@ class RentActivity : BaseActivity<RentPresenter>(), RentView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         toast = Toast.makeText(applicationContext, "", Toast.LENGTH_LONG)
-        setSupportActionBar(toolbar_actionbar)
+        toolbar.setTitle(R.string.app_name)
 
         rentRecycler.layoutManager = layoutManager
         rentRecycler.adapter = presenter.rentAdapter
